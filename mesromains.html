@@ -1,40 +1,41 @@
 <html>
-	<head>
-		<title>romain</title>
-		<meta charset="utf-8" />
-		<style>
-			body{
-			background-color:wheat;
-			}
 
-			#wrapper{
-			width:80%;
-			}
+<head>
+	<title>romain</title>
+	<meta charset="utf-8" />
+	<style>
+		body {
+			background-color: wheat;
+		}
 
-			h3{
+		#wrapper {
+			width: 80%;
+		}
+
+		h3 {
 			/*text-decoration:overline;*/
-			display:inline-block;
-			}
+			display: inline-block;
+		}
 
-			.roman{
-				background-color:white;
-				display: inline-block;
+		.roman {
+			background-color: white;
+			display: inline-block;
 			height: 45px;
 			width: 231px;
 			border: 1px solid darkgrey;
 			border-radius: 3px;
-			}
+		}
 
-			#macron{
-				/*text-decoration:overline;*/
-			}
+		.macron {
+			text-decoration:overline;
+		}
 
-			#doublemacron{
-				/*text-decoration:overline;*/
-			}
+		/* .doublemacron {
+			text-decoration:overline;
+		} */
+	</style>
+</head>
 
-		</style>
-	</head>
 <body>
 	<center>
 		<div id="wrapper">
@@ -43,201 +44,195 @@
 
 			<div>
 				<p>Dans les temps anciens, il était de coutûme d'écrire ou de compter avec les chiffres
-				romains, les chiffres arabes actuels n'étant pas la norme à cette époque.</p>
+					romains, les chiffres arabes actuels n'étant pas la norme à cette époque.</p>
 				<p>Les chiffres romains inspirés de la culture "etrusque" sont basés sur 7 caractères
-				alphabétique bien connus et sont combinés suivant des règles syntaxiques permettant
-				une interprétation conforme!</p>
+					alphabétique bien connus et sont combinés suivant des règles syntaxiques permettant
+					une interprétation conforme!</p>
 			</div>
 
 			<div>
 				<h3>Liste des 7 chiffres romains</h3>
 				<ul style="list-style-type:none">
-				<li>I = 1</li>
-				<li>V = 5</li>
-				<li>X = 10</li>
-				<li>L = 50</li>
-				<li>C = 100</li>
-				<li>D = 500</li>
-				<li>M = 1000</li>
+					<li>I = 1</li>
+					<li>V = 5</li>
+					<li>X = 10</li>
+					<li>L = 50</li>
+					<li>C = 100</li>
+					<li>D = 500</li>
+					<li>M = 1000</li>
 			</div>
 
 			<div style="display:none">
-			<span style="text-decoration:overline;text-decoration-style:double">25000000000</span>
+				<span style="text-decoration:overline;text-decoration-style:double">25000000000</span>
 			</div>
 
 			<div id="convert-machine">
 				<label for="arab">nombre en chiffres arabes
-				<input type="text" style="margin-left: 12px"
-				placeholder="0123456789" id="arab"></label>
+					<input type="text" style="margin-left: 12px" placeholder="0123456789" id="arab"></label>
 			</div>
 
 
-				<label for="roman">nombre en chiffres romains</label>
-				<div class="roman"><h3 id="doublemacron"></h3><h3 id="macron"></h3><h3 id="roman"></h3></div>
+			<label for="roman">nombre en chiffres romains</label>
+			<div class="roman">
+				<h3 id="doublemacron"></h3>
+				<h3 id="macron"></h3>
+				<h3 id="roman"></h3>
+			</div>
 
 		</div>
 	</center>
 
-<script type="text/javascript">
+	<script type="text/javascript">
 
-//var arabe=document.querySelector('#arab');
-//var t=arabe.value;
-//var romain=document.querySelector('#roman');
-//var r=roman.value;
+		//var arabe=document.querySelector('#arab');
+		//var t=arabe.value;
+		//var romain=document.querySelector('#roman');
+		//var r=roman.value;
 
-var unitet=['zero','un','deux','trois','quatre','cinq','six','sept','huit','neuf'];
-var dizainet=['', 'dix','vingt','trente','quarante','cinquante','soixante','soixante-dix','quatre-vingt','quatre-vingt-dix'];
-var centainet=['','cent','deux-cents','trois-cents',
-'quatre-cents','cinq-cents',
-'six-cents','sept-cents',
-'huit-cents','neuf-cents'];
+		var unitet = ['zero', 'un', 'deux', 'trois', 'quatre', 'cinq', 'six', 'sept', 'huit', 'neuf'];
+		var dizainet = ['', 'dix', 'vingt', 'trente', 'quarante', 'cinquante', 'soixante', 'soixante-dix', 'quatre-vingt', 'quatre-vingt-dix'];
+		var centainet = ['', 'cent', 'deux-cents', 'trois-cents','quatre-cents', 'cinq-cents', 'six-cents', 'sept-cents', 'huit-cents', 'neuf-cents'];
 
-var unitromain=['','I','II','III',
-'IV','V','VI','VII','VIII','IX'];
-var dizromain=['','X','XX','XXX','XL',
-'L','LX','LXX','LXXX','XC'];
-var centromain=['','C','CC','CCC','CD','D','DC',
-'DCC','DCCC','CM']
-var mromain=['','M','MM','MMM','MMMM','MMMMM','MMMMMM'];
-//var unite=getunit(arabe);alert(unite);
-//var dizaine=getdizaine(arabe);
-//var centaine=getcentaine(arabe);
+		var unitromain = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
+		var dizromain = ['', 'X', 'XX', 'XXX', 'XL', 'L', 'LX', 'LXX', 'LXXX', 'XC'];
+		var centromain = ['', 'C', 'CC', 'CCC', 'CD', 'D', 'DC', 'DCC', 'DCCC', 'CM']
+		var mromain = ['', 'M', 'MM', 'MMM', 'MMMM', 'MMMMM', 'MMMMMM'];
+		//var unite=getunit(arabe);alert(unite);
+		//var dizaine=getdizaine(arabe);
+		//var centaine=getcentaine(arabe);
 
-document.querySelector('#arab').addEventListener('keyup',function(){
-	var t=(this.value);
+		document.querySelector('#arab').addEventListener('keyup', function () {
+			var t = (this.value);
 
-	var million=oneMillion(t);
-	var unitmillion=getunit(million);
-	var dizmillion=getdizaine(million);
-	var centmillion=getcentaine(million);
+			var million = oneMillion(t);
+			var unitmillion = getunit(million);
+			var dizmillion = getdizaine(million);
+			var centmillion = getcentaine(million);
 
-	var mil=getthousand(t);
-	//var unitmil=getunit(mil);
-	var unitmil=getmil(mil);
-	var dizmil=getdizaine(mil);
-	var centmil=getcentaine(mil);
+			var mil = getthousand(t);
+			//var unitmil=getunit(mil);
+			var unitmil = getmil(mil);//alert(unitmil);
+			var dizmil = getdizaine(mil);//alert(dizmil);
+			var centmil = getcentaine(mil);
 
-	var cents=getcentaine(t);//alert(cents);
-	var diz=getdizaine(t);
-	var unite=getunit(t);//alert(unite);
-	document.querySelector('#doublemacron').innerHTML=centromain[centmillion]
-	+dizromain[dizmillion]+unitromain[unitmillion];
-	document.querySelector('#macron').innerHTML=centromain[centmil]
-	+dizromain[dizmil]+unitmil;
-	document.querySelector('#roman').innerHTML=centromain[cents]
-	+dizromain[diz]+unitromain[unite];
+			var cents = getcentaine(t);//alert(cents);
+			var diz = getdizaine(t);
+			var unite = getunit(t);//alert(unite);
+			// document.querySelector('#doublemacron').innerHTML = centromain[centmillion]	+ dizromain[dizmillion] + unitromain[unitmillion];
+			// document.querySelector('#macron').innerHTML = centromain[centmil] + dizromain[dizmil] + unitmil;
+			document.querySelector('#roman').innerHTML =  unitmil + centromain[cents] + dizromain[diz] + unitromain[unite];
 
 
-	//centainet[cents]+' '+
-	//dizainet[diz]+" "+unitet[unite];
+			//centainet[cents]+' '+
+			//dizainet[diz]+" "+unitet[unite];
 
-	/*
-	document.querySelector('#arab').
-	addEventListener('keyup',function(){
-	var t=parseInt(this.value);
-	alert(t);
-	/*
-	//if(t.length<4){
-	var hundred=getcentaine(t);
-	alert(hundred);
-	document.querySelector('#roman').
-	value=centainet[hundred];*/
-	//alert(hundred);
-	//}*/
-});
-
-function getmil(a){
-	var lemil, lemil2;
-	lemil=(a<4)?mromain[a]:unitromain[a];
-//	lemil2=(lemil>9)
-	return lemil;
-}
-
-
-function getunit(nombre){
-/*var unit1=nombre/10;
-
-var unit2=Math.floor(unit1);
-
-var unit3= unit1-unit2;
-var unit=Math.floor(unit3*10);*/
-
-var unit=nombre%10;
-//var unit2=unit!=0?unit:'';
-return unit;
-
-}
-
-function getdizaine(nombre){
-/*
-var unit1=nombre/100;
-var unit2=Math.floor(unit1);
-var unit3= unit1-unit2;
-var unit=unit3*10;
-var unit=Math.floor(unit);
-return unit;*/
-
-var toto=nombre%100;
-var titi=Math.floor(toto/10);
-return titi;
-
-
-}
-
-function getcentaine(nombre){
-var unit1=nombre/100;
-var unit=Math.floor(unit1);
-var unit2=(unit.toString()).split("");
-var unit3=unit2[unit2.length-1];
-return parseInt(unit3);
-}
-
-function getthousand(nombre){
-		var unit1=nombre/1000;
-		var unit=Math.floor(unit1);
-		var mille;
-		var unit_string=unit.toString().length;
-		/*switch(unit_string){
-			case "1":
-			mille=unitromain[unit];
-			break;
 			/*
-			case "2":
-			var tab=unit_string.split('');
-			chif1=tab[0];
-			chif2=tab[1];
-			mille=parseInt(dizromain[chif1])+parseInt(unitromain[chif2]);
-			break;
-		}*/
-		return unit;
-		}
-function oneMillion(nombre){
-		var unit1=nombre/1000000;
-		var unit=Math.floor(unit1);
-		var mille;
-		return unit;
-		}
+			document.querySelector('#arab').
+			addEventListener('keyup',function(){
+			var t=parseInt(this.value);
+			alert(t);
+			/*
+			//if(t.length<4){
+			var hundred=getcentaine(t);
+			alert(hundred);
+			document.querySelector('#roman').
+			value=centainet[hundred];*/
+			//alert(hundred);
+			//}*/
+		});
 
-function empty(){
-	var a=document.querySelector('#arab');
-	var b=document.querySelector('.roman');
-	if(a.value==' '){
-		b.innerHTML='';
+		function getmil(a) {
+			var lemil, lemil2;
+			lemil = (a <= 4) ? mromain[a] : '<span class="macron">'+unitromain[a]+'</span>';
+			//	lemil2=(lemil>9)
+			return lemil;
 		}
 
-}
 
-function parser(a){
-	if(isNaN(a)){
-		a.value='';
-	}else{
-		var b=parseInt(a);
-	     }
-	return b;
-}
+		function getunit(nombre) {
+			/*var unit1=nombre/10;
+			
+			var unit2=Math.floor(unit1);
+			
+			var unit3= unit1-unit2;
+			var unit=Math.floor(unit3*10);*/
+
+			var unit = nombre % 10;
+			//var unit2=unit!=0?unit:'';
+			return unit;
+
+		}
+
+		function getdizaine(nombre) {
+			/*
+			var unit1=nombre/100;
+			var unit2=Math.floor(unit1);
+			var unit3= unit1-unit2;
+			var unit=unit3*10;
+			var unit=Math.floor(unit);
+			return unit;*/
+
+			var toto = nombre % 100;
+			var titi = Math.floor(toto / 10);
+			return titi;
+
+
+		}
+
+		function getcentaine(nombre) {
+			var unit1 = nombre / 100;
+			var unit = Math.floor(unit1);
+			var unit2 = (unit.toString()).split("");
+			var unit3 = unit2[unit2.length - 1];
+			return parseInt(unit3);
+		}
+
+		function getthousand(nombre) {
+			var unit1 = nombre / 1000;
+			var unit = Math.floor(unit1);
+			var mille;
+			var unit_string = unit.toString().length;
+			/*switch(unit_string){
+				case "1":
+				mille=unitromain[unit];
+				break;
+				/*
+				case "2":
+				var tab=unit_string.split('');
+				chif1=tab[0];
+				chif2=tab[1];
+				mille=parseInt(dizromain[chif1])+parseInt(unitromain[chif2]);
+				break;
+			}*/
+			return unit;
+		}
+		function oneMillion(nombre) {
+			var unit1 = nombre / 1000000;
+			var unit = Math.floor(unit1);
+			var mille;
+			//alert(unit);
+			return unit;
+		}
+
+		function empty() {
+			var a = document.querySelector('#arab');
+			var b = document.querySelector('.roman');
+			if (a.value == ' ') {
+				b.innerHTML = '';
+			}
+
+		}
+
+		function parser(a) {
+			if (isNaN(a)) {
+				a.value = '';
+			} else {
+				var b = parseInt(a);
+			}
+			return b;
+		}
 
 
 
 
-</script>
-    
+	</script>
