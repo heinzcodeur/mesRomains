@@ -109,15 +109,16 @@
 			var dizmillion = getdizaine(million);
 			var centmillion = getcentaine(million);
 
+			//obtenir le chiffre/nombre des milliers
 			var mil = getthousand(t);
 			//var unitmil=getunit(mil);
-			var unitmil = getmil(mil);//alert(unitmil);
-			var dizmil = getdizaine(mil);//alert(dizmil);
+			var unitmil = getmil(mil);
+			var dizmil = getdizaine(mil);
 			var centmil = getcentaine(mil);
 
-			var cents = getcentaine(t);//alert(cents);
+			var cents = getcentaine(t);
 			var diz = getdizaine(t);
-			var unite = getunit(t);//alert(unite);
+			var unite = getunit(t);
 			// document.querySelector('#doublemacron').innerHTML = centromain[centmillion]	+ dizromain[dizmillion] + unitromain[unitmillion];
 			// document.querySelector('#macron').innerHTML = centromain[centmil] + dizromain[dizmil] + unitmil;
 			document.querySelector('#roman').innerHTML =  unitmil + centromain[cents] + dizromain[diz] + unitromain[unite];
@@ -143,9 +144,24 @@
 
 		function getmil(a) {
 			var lemil, lemil2;
-			lemil = (a <= 4) ? mromain[a] : '<span class="macron">'+unitromain[a]+'</span>';
-			//	lemil2=(lemil>9)
-			return lemil;
+			
+			if(a<9){
+				lemil = (a <= 4) ? mromain[a] : '<span class="macron">'+unitromain[a]+'</span>';
+				
+				return lemil;
+			}
+			if(a<100){
+				console.log(getdizaine(a).toString()+getunit(a).toString());
+				lemil = '<span class="macron">'+dizromain[getdizaine(a)]+unitromain[getunit(a)]+'</span>';
+				return lemil;
+			}
+			if(a>99){
+				console.log(getcentaine(a).toString()+getdizaine(a).toString()+getunit(a).toString());
+				lemil = '<span class="macron">'+centromain[getcentaine(a)]+dizromain[getdizaine(a)]+unitromain[getunit(a)]+'</span>';
+				return lemil;
+			}
+
+				return 'code en cours';
 		}
 
 
@@ -175,8 +191,6 @@
 			var toto = nombre % 100;
 			var titi = Math.floor(toto / 10);
 			return titi;
-
-
 		}
 
 		function getcentaine(nombre) {
@@ -204,13 +218,19 @@
 				mille=parseInt(dizromain[chif1])+parseInt(unitromain[chif2]);
 				break;
 			}*/
-			return unit;
+
+			// if(unit > 9){
+			 	//console.log(unit);
+				return unit;
+			// }
+
+			// return 0
+
 		}
 		function oneMillion(nombre) {
 			var unit1 = nombre / 1000000;
 			var unit = Math.floor(unit1);
 			var mille;
-			//alert(unit);
 			return unit;
 		}
 
